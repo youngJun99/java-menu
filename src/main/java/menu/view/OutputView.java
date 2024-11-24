@@ -35,6 +35,7 @@ public class OutputView {
                 coachMenuDTO.getMenus().get(2),
                 coachMenuDTO.getMenus().get(3),
                 coachMenuDTO.getMenus().get(4));
+        System.out.println();
     }
 
 }
