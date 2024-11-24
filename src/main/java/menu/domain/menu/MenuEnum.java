@@ -41,6 +41,23 @@ public enum MenuEnum {
                 .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
     }
 
+    public static int getNumberOfMenus(int index) {
+        return Arrays.stream(MenuEnum.values())
+                .filter(category -> category.categoryNumber == index)
+                .map(category -> category.menus.size())
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    }
+
+    public static String getMenuName(int categoryIndex, int menuNumber) {
+        return Arrays.stream(MenuEnum.values())
+                .filter(category -> category.categoryNumber == categoryIndex)
+                .map(category -> category.menus.get(menuNumber - 1))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    }
+
+
     public int getCategoryNumber() {
         return categoryNumber;
     }
@@ -50,11 +67,4 @@ public enum MenuEnum {
     }
 
 
-    public int getNumberOfMenus() {
-        return menus.size();
-    }
-
-    public String getMenuNumber(int menuIndex) {
-        return menus.get(menuIndex - 1);
-    }
 }

@@ -1,8 +1,10 @@
 package menu.service;
 
+import menu.domain.coach.Coaches;
 import menu.domain.menu.MenuEnum;
 import menu.domain.random.RandomNumberGenerator;
 import menu.dto.CategoryDTO;
+import menu.dto.CoachMenuDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +29,24 @@ public class RandomMenuMatchingService {
                 .collect(Collectors.toList()));
     }
 
-    public matchRandomMenu()
+    public List<CoachMenuDTO> matchRandomMenu(Coaches coaches) {
+        List<String> coachNames = coaches.getCoachNames();
+
+        return coachNames.stream().map(coach -> {
+                    List<String> menus = new ArrayList<>();
+                    randomCategoryIndex.forEach(index -> {
+                                while (true) {
+                                    int randomMenuIndex = randomNumberGenerator.generateBetweenRange(1, MenuEnum.getNumberOfMenus(index));
+                                    String randomMenu = MenuEnum.getMenuName(index, randomMenuIndex);
+                                    if (!menus.contains(randomMenu) && coaches.canEat(coach, randomMenu)) {
+                                        menus.add(randomMenu);
+                                        break;
+                                    }
+                                }
+                            });
+                    return new CoachMenuDTO(coach,menus);
+                }).collect(Collectors.toList());
+    }
 
 
     private void matchRandomMenuCategories() {
