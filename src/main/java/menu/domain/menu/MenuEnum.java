@@ -23,14 +23,6 @@ public enum MenuEnum {
         this.menus = List.of(menus.split(","));
     }
 
-    public int getCategoryNumber() {
-        return categoryNumber;
-    }
-
-    public String getFoodCategoryName() {
-        return foodCategoryName;
-    }
-
     public static boolean contains(String menu) {
         return Arrays.stream(MenuEnum.values())
                 .anyMatch(enumValue -> enumValue.menus.contains(menu));
@@ -40,6 +32,24 @@ public enum MenuEnum {
         return (int) Arrays.stream(MenuEnum.values())
                 .count();
     }
+
+    public static String getCategoryName(int index) {
+        Arrays.stream(MenuEnum.values())
+                .filter(category -> category.categoryNumber == index)
+                .map(MenuEnum::getFoodCategoryName)
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    }
+
+    public int getCategoryNumber() {
+        return categoryNumber;
+    }
+
+    public String getFoodCategoryName() {
+        return foodCategoryName;
+    }
+
+
 
     public int getNumberOfMenus() {
         return menus.size();
