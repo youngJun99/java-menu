@@ -1,5 +1,8 @@
-package menu.constants;
+package menu.domain.menu;
 
+import menu.constants.Errors;
+
+import java.util.Arrays;
 import java.util.List;
 
 public enum MenuEnum {
@@ -11,12 +14,33 @@ public enum MenuEnum {
     양식(5, "양식", "라자냐,그라탱,뇨끼,끼슈,프렌치 토스트,바게트,스파게티,피자,파니니");
 
     private final int categoryIndex;
-    private final String foodCategory;
+    private final String foodCategoryName;
     private final List<String> menus;
 
     MenuEnum(int categoryIndex, String foodCategory, String menus) {
         this.categoryIndex = categoryIndex;
-        this.foodCategory = foodCategory;
+        this.foodCategoryName = foodCategory;
         this.menus = List.of(menus.split(","));
+    }
+
+    public int getCategoryIndex() {
+        return categoryIndex;
+    }
+
+    public String getFoodCategoryName() {
+        return foodCategoryName;
+    }
+
+    int getNumberOfCategories() {
+        return (int) Arrays.stream(MenuEnum.values())
+                .count();
+    }
+
+    int getNumberOfMenus(int findCategoryIndex) {
+        Arrays.stream(MenuEnum.values())
+                .filter(category -> category.categoryIndex == findCategoryIndex)
+                .findFirst()
+                .map(category -> category.menus.size())
+                .orElseThrow(() -> new IllegalArgumentException(Errors.UNKNOWN_MENU_INDEX.getMessage()));
     }
 }
