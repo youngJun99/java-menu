@@ -1,8 +1,11 @@
 package menu.domain.coach;
 
 import menu.constants.Errors;
+import menu.domain.menu.MenuEnum;
 
 import java.util.List;
+
+import static menu.domain.menu.MenuEnum.contains;
 
 public class Coach {
 
@@ -21,7 +24,8 @@ public class Coach {
     }
 
     public void setNonEatableMenu(List<String> nonEatableMenu) {
-        validateNoneEatableMenu(nonEatableMenu);
+        validateNoneEatableMenuSize(nonEatableMenu);
+        validateNoneEatableMenuInMenuSheeet(nonEatableMenu);
         this.nonEatableMenu = nonEatableMenu;
     }
 
@@ -39,12 +43,20 @@ public class Coach {
         }
     }
 
-    private void validateNoneEatableMenu(List<String> nonEatableMenu) {
+    private void validateNoneEatableMenuSize(List<String> nonEatableMenu) {
         if (nonEatableMenu.size() > NON_EATABLE_MENU_RANGE_UPPER_INDEX) {
             throw new IllegalArgumentException(String.format(
                     Errors.NON_EATABLE_MENU_RANGE.getMessage(),
                     NON_EATABLE_MENU_RANGE_LOWER_INDEX,
                     NON_EATABLE_MENU_RANGE_UPPER_INDEX));
+        }
+    }
+
+    private void validateNoneEatableMenuInMenuSheeet(List<String> nonEatableMenu) {
+        boolean isNotValid = !nonEatableMenu.stream()
+                .allMatch(MenuEnum::contains);
+        if (isNotValid) {
+            throw new IllegalArgumentException(Errors.NON_EATABLE_MENU_DOES_NOT_EXIST.getMessage());
         }
     }
 
