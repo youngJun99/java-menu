@@ -31,7 +31,7 @@ public class Coach {
     }
 
     public boolean canEat(String menu) {
-        return nonEatableMenu.contains(menu);
+        return !nonEatableMenu.contains(menu);
     }
 
     private void validateName(String name) {
