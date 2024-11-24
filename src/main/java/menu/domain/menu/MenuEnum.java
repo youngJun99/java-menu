@@ -34,7 +34,7 @@ public enum MenuEnum {
     }
 
     public static String getCategoryName(int index) {
-        Arrays.stream(MenuEnum.values())
+        return Arrays.stream(MenuEnum.values())
                 .filter(category -> category.categoryNumber == index)
                 .map(MenuEnum::getFoodCategoryName)
                 .findFirst()
@@ -48,7 +48,6 @@ public enum MenuEnum {
     public String getFoodCategoryName() {
         return foodCategoryName;
     }
-
 
 
     public int getNumberOfMenus() {
