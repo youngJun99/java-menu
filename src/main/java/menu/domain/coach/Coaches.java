@@ -9,10 +9,8 @@ public class Coaches {
 
     List<Coach> coaches;
 
-    public Coaches(List<String> coaches) {
-        this.coaches = coaches.stream()
-                .map(Coach::new)
-                .collect(Collectors.toList());
+    public Coaches(List<Coach> coaches) {
+        this.coaches = coaches;
     }
 
     public void setUnEatableMenuFor(String coachName, List<String> unEatableMenu) {
