@@ -4,6 +4,7 @@ public enum Errors {
 
     //개발자용 시스템 에러
     MENU_CHECK("메뉴 조회 오류"),
+    COACH_CHECK("코치 조회 오류"),
 
     //코치 입력 관련 에러
     COACH_NAME_RANGE("코치의 이름은 최소 %d글자 최대 %d글자 여야 합니다."),
