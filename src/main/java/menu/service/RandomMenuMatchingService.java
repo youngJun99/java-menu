@@ -27,6 +27,8 @@ public class RandomMenuMatchingService {
                 .collect(Collectors.toList()));
     }
 
+    public matchRandomMenu()
+
 
     private void matchRandomMenuCategories() {
         List<Integer> categories = new ArrayList<>();
