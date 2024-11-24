@@ -37,10 +37,18 @@ public enum MenuEnum {
     }
 
     int getNumberOfMenus(int findCategoryIndex) {
-        Arrays.stream(MenuEnum.values())
+        return Arrays.stream(MenuEnum.values())
                 .filter(category -> category.categoryIndex == findCategoryIndex)
                 .findFirst()
                 .map(category -> category.menus.size())
-                .orElseThrow(() -> new IllegalArgumentException(Errors.UNKNOWN_MENU_INDEX.getMessage()));
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    }
+
+    String getMenuFromCategory(int findCategoryIndex, int menuIndex) {
+        return Arrays.stream(MenuEnum.values())
+                .filter(category-> category.categoryIndex == findCategoryIndex)
+                .findFirst()
+                .map(category-> category.menus.get(menuIndex-1))
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
     }
 }

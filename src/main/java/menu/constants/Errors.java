@@ -2,8 +2,8 @@ package menu.constants;
 
 public enum Errors {
 
-    //시스템 에러
-    UNKNOWN_MENU_INDEX("메뉴 인덱스가 존재하지 않습니다");
+    //개발자용 시스템 에러
+    MENU_CHECK("메뉴 조회 오류");
 
 
     private static final String PREFIX = "[ERROR] ";
