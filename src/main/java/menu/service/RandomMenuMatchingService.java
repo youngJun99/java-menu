@@ -36,7 +36,7 @@ public class RandomMenuMatchingService {
                     List<String> menus = new ArrayList<>();
                     randomCategoryIndex.forEach(index -> {
                                 while (true) {
-                                    int randomMenuIndex = randomCategoryPicker.generateBetweenRange(1, MenuEnum.getNumberOfMenus(index));
+                                    int randomMenuIndex = randomCategoryPicker.pickBetweenRange(1, MenuEnum.getNumberOfMenus(index));
                                     String randomMenu = MenuEnum.getMenuName(index, randomMenuIndex);
                                     if (!menus.contains(randomMenu) && coaches.canEat(coach, randomMenu)) {
                                         menus.add(randomMenu);
@@ -53,7 +53,7 @@ public class RandomMenuMatchingService {
         List<Integer> categories = new ArrayList<>();
 
         while (categories.size() < DAYS_TO_MATCH) {
-            int categoryNumber = randomCategoryPicker.generateBetweenRange(1, MenuEnum.getNumberOfCategories());
+            int categoryNumber = randomCategoryPicker.pickBetweenRange(1, MenuEnum.getNumberOfCategories());
             int duplicate = (int) categories.stream()
                     .filter(index -> index == categoryNumber)
                     .count();
