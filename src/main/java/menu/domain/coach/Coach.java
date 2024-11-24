@@ -14,13 +14,16 @@ public class Coach {
 
 
     private final String name;
-    private final List<String> nonEatableMenu;
+    private List<String> nonEatableMenu;
 
-    public Coach(String name, List<String> noneEatableMenu) {
+    public Coach(String name) {
         validateName(name);
-        validateNoneEatableMenu(noneEatableMenu);
         this.name = name;
-        this.nonEatableMenu = noneEatableMenu;
+    }
+
+    public void setNonEatableMenu(List<String> nonEatableMenu) {
+        validateNoneEatableMenu(nonEatableMenu);
+        this.nonEatableMenu = nonEatableMenu;
     }
 
     public String getName() {
