@@ -2,6 +2,7 @@ package menu;
 
 import menu.controller.Controller;
 import menu.domain.random.RandomCategoryPickerImpl;
+import menu.domain.random.RandomMenuPickerImpl;
 import menu.handler.InputHandler;
 import menu.handler.InputValidatorImpl;
 import menu.service.CoachSettingService;
@@ -18,7 +19,8 @@ public class AppConfig {
                                 new InputView(),
                                 new InputValidatorImpl())),
                 new RandomMenuMatchingService(
-                        new RandomCategoryPickerImpl()),
+                        new RandomCategoryPickerImpl(),
+                        new RandomMenuPickerImpl()),
                 new OutputView());
     }
 }

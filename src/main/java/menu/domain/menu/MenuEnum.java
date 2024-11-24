@@ -2,6 +2,7 @@ package menu.domain.menu;
 
 import menu.constants.Errors;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -41,25 +42,16 @@ public enum MenuEnum {
                 .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
     }
 
-    public static int getNumberOfMenus(int index) {
-        return Arrays.stream(MenuEnum.values())
+    public static List<String> getMenusFrom(int index) {
+        return new ArrayList<>(Arrays.stream(MenuEnum.values())
                 .filter(category -> category.categoryNumber == index)
-                .map(category -> category.menus.size())
+                .map(MenuEnum::getMenus)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage())));
     }
 
-    public static String getMenuName(int categoryIndex, int menuNumber) {
-        return Arrays.stream(MenuEnum.values())
-                .filter(category -> category.categoryNumber == categoryIndex)
-                .map(category -> category.menus.get(menuNumber - 1))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
-    }
-
-
-    public int getCategoryNumber() {
-        return categoryNumber;
+    public List<String> getMenus() {
+        return menus;
     }
 
     public String getFoodCategoryName() {

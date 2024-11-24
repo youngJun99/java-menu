@@ -3,6 +3,7 @@ package menu.service;
 import menu.domain.coach.Coaches;
 import menu.domain.menu.MenuEnum;
 import menu.domain.random.RandomCategoryPicker;
+import menu.domain.random.RandomMenuPicker;
 import menu.dto.CategoryDTO;
 import menu.dto.CoachMenuDTO;
 
@@ -16,10 +17,12 @@ public class RandomMenuMatchingService {
     private static final int MAX_DUPLICATE_OF_CATEGORY = 2;
 
     private final RandomCategoryPicker randomCategoryPicker;
+    private final RandomMenuPicker randomMenuPicker;
     private List<Integer> randomCategoryIndex;
 
-    public RandomMenuMatchingService(RandomCategoryPicker randomCategoryPicker) {
+    public RandomMenuMatchingService(RandomCategoryPicker randomCategoryPicker, RandomMenuPicker randomMenuPicker) {
         this.randomCategoryPicker = randomCategoryPicker;
+        this.randomMenuPicker = randomMenuPicker;
     }
 
     public CategoryDTO matchRandomMenuCategory() {
@@ -36,8 +39,7 @@ public class RandomMenuMatchingService {
                     List<String> menus = new ArrayList<>();
                     randomCategoryIndex.forEach(index -> {
                                 while (true) {
-                                    int randomMenuIndex = randomCategoryPicker.pickBetweenRange(1, MenuEnum.getNumberOfMenus(index));
-                                    String randomMenu = MenuEnum.getMenuName(index, randomMenuIndex);
+                                    String randomMenu = randomMenuPicker.pickRandomMenu(MenuEnum.getMenusFrom(index));
                                     if (!menus.contains(randomMenu) && coaches.canEat(coach, randomMenu)) {
                                         menus.add(randomMenu);
                                         break;
