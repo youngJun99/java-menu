@@ -13,42 +13,39 @@ public enum MenuEnum {
     아시안(4, "아시안", "팟타이,카오 팟,나시고렝,파인애플 볶음밥,쌀국수,똠얌꿍,반미,월남쌈,분짜"),
     양식(5, "양식", "라자냐,그라탱,뇨끼,끼슈,프렌치 토스트,바게트,스파게티,피자,파니니");
 
-    private final int categoryIndex;
+    private final int categoryNumber;
     private final String foodCategoryName;
     private final List<String> menus;
 
-    MenuEnum(int categoryIndex, String foodCategory, String menus) {
-        this.categoryIndex = categoryIndex;
+    MenuEnum(int categoryNumber, String foodCategory, String menus) {
+        this.categoryNumber = categoryNumber;
         this.foodCategoryName = foodCategory;
         this.menus = List.of(menus.split(","));
     }
 
-    public int getCategoryIndex() {
-        return categoryIndex;
+    public int getCategoryNumber() {
+        return categoryNumber;
     }
 
     public String getFoodCategoryName() {
         return foodCategoryName;
     }
 
-    int getNumberOfCategories() {
+    public static boolean contains(String menu) {
+        return Arrays.stream(MenuEnum.values())
+                .anyMatch(enumValue -> enumValue.menus.contains(menu));
+    }
+
+    public static int getNumberOfCategories() {
         return (int) Arrays.stream(MenuEnum.values())
                 .count();
     }
 
-    int getNumberOfMenus(int findCategoryIndex) {
-        return Arrays.stream(MenuEnum.values())
-                .filter(category -> category.categoryIndex == findCategoryIndex)
-                .findFirst()
-                .map(category -> category.menus.size())
-                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    public int getNumberOfMenus() {
+        return menus.size();
     }
 
-    String getMenuFromCategory(int findCategoryIndex, int menuIndex) {
-        return Arrays.stream(MenuEnum.values())
-                .filter(category-> category.categoryIndex == findCategoryIndex)
-                .findFirst()
-                .map(category-> category.menus.get(menuIndex-1))
-                .orElseThrow(() -> new IllegalArgumentException(Errors.MENU_CHECK.getMessage()));
+    public String getMenuNumber(int menuIndex) {
+        return menus.get(menuIndex - 1);
     }
 }
