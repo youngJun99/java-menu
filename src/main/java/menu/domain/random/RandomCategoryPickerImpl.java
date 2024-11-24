@@ -2,7 +2,7 @@ package menu.domain.random;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RandomNumberGeneratorImpl implements RandomNumberGenerator{
+public class RandomCategoryPickerImpl implements RandomCategoryPicker {
 
     @Override
     public int generateBetweenRange(int start, int end) {

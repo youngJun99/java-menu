@@ -1,5 +1,5 @@
 package menu.domain.random;
 
-public interface RandomNumberGenerator {
+public interface RandomCategoryPicker {
     int generateBetweenRange(int start, int end);
 }
