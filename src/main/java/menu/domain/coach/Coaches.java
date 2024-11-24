@@ -3,6 +3,7 @@ package menu.domain.coach;
 import menu.constants.Errors;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Coaches {
 
@@ -13,6 +14,12 @@ public class Coaches {
 
     public Coaches(List<Coach> coaches) {
         this.coaches = coaches;
+    }
+
+    public List<String> getCoachNames() {
+        return coaches.stream()
+                .map(Coach::getName)
+                .collect(Collectors.toUnmodifiableList());
     }
 
     public void setUnEatableMenuFor(String coachName, List<String> unEatableMenu) {
