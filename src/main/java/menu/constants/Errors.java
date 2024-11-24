@@ -9,6 +9,7 @@ public enum Errors {
     //코치 입력 관련 에러
     COACH_NAME_RANGE("코치의 이름은 최소 %d글자 최대 %d글자 여야 합니다."),
     COACH_INPUT_INVALID("코치 입력 형식이 올바르지 않습니다."),
+    COACHES_RANGE("함께 밥을 먹는 코치들은 최소 %d명 최대 %d명 입니다."),
 
     //못먹는 메뉴 입력 관련 에러
     NON_EATABLE_MENU_RANGE("코치가 못먹는 음식은 최소 %d개 최대 %개 사이여야 합니다."),
