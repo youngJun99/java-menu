@@ -1,7 +1,6 @@
 package menu.domain.coach;
 
 import menu.constants.Errors;
-import menu.domain.menu.MenuEnum;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class Coach {
     private void validateNoneEatableMenu(List<String> nonEatableMenu) {
         if (nonEatableMenu.size() > NON_EATABLE_MENU_RANGE_UPPER_INDEX) {
             throw new IllegalArgumentException(String.format(
-                    Errors.NONE_EATABLE_MENU_RANGE.getMessage(),
+                    Errors.NON_EATABLE_MENU_RANGE.getMessage(),
                     NON_EATABLE_MENU_RANGE_LOWER_INDEX,
                     NON_EATABLE_MENU_RANGE_UPPER_INDEX));
         }
