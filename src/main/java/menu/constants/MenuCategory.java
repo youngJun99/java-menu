@@ -22,6 +22,19 @@ public enum MenuCategory {
         return menus;
     }
 
+    public static boolean menuIsValid(String menuName) {
+        return Arrays.stream(MenuCategory.values())
+                .anyMatch(menuCategory -> {
+                    List<String> menus = menuCategory.getMenus();
+                    if (menus.contains(menuName)) {
+                        return true;
+                    }
+                    return false;
+                });
+
+
+    }
+
     public static MenuCategory ofIndex(int index) {
         return Arrays.stream(MenuCategory.values())
                 .filter(menuCategory -> menuCategory.index == index)
