@@ -18,6 +18,10 @@ public enum MenuCategory {
         this.menus = menus;
     }
 
+    public List<String> getMenus() {
+        return menus;
+    }
+
     public static MenuCategory ofIndex(int index) {
         return Arrays.stream(MenuCategory.values())
                 .filter(menuCategory -> menuCategory.index == index)

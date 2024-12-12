@@ -24,7 +24,7 @@
 - 1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식을 추천해야 한다.
 
 ### RandomMenuPicker 
--[ ] category를 알려주면 메뉴를뽑아준다.
+-[X] category를 알려주면 메뉴를뽑아준다.
 - 메뉴는 Randoms.shuffle을 이용해서 섞은후 첫번째 값을 사용하세요.
 
 ### InputHandler
