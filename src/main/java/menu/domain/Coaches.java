@@ -1,5 +1,6 @@
 package menu.domain;
 
+import menu.constants.Errors;
 import menu.dto.CoachMenuDto;
 
 import java.util.List;
@@ -13,6 +14,7 @@ public class Coaches {
     private final List<Coach> coaches;
 
     public Coaches(List<Coach> coaches) {
+        validateCoachRange(coaches);
         this.coaches = coaches;
     }
 
@@ -34,6 +36,12 @@ public class Coaches {
         return coaches.stream()
                 .map(Coach::getCoachMenu)
                 .collect(Collectors.toList());
+    }
+
+    private void validateCoachRange(List<Coach> coaches){
+        if(coaches.size()<COACH_LENGTH_LOWER_LIMIT || coaches.size() > COACH_LENGTH_UPPER_LIMIT) {
+            throw new IllegalArgumentException(String.format(Errors.COACHES_RANGE.getMessage(),COACH_LENGTH_LOWER_LIMIT,COACH_LENGTH_UPPER_LIMIT));
+        }
     }
 
 }
