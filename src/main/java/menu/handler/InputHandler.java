@@ -20,21 +20,24 @@ public class InputHandler {
         this.inputValidator = inputValidator;
     }
 
-    public Coaches getCoaches() {
-        List<Coach> coaches = ErrorCatcher.returnRetryHandler(this::getCoachList);
-        coaches.forEach(coach -> {
-                    List<String> uneatableFoods = ErrorCatcher.returnRetryHandler(()->getUnEatableFoodList(coach.getName()));
-                    coach.setFoodsCannotEat(uneatableFoods);
-                });
-        return new Coaches(coaches);
+    public Coaches requestCoaches() {
+        return ErrorCatcher.returnRetryHandler(this::getCoaches);
     }
 
-    private List<Coach> getCoachList() {
+    private Coaches getCoaches() {
         String coaches = inputView.getCoaches();
         inputValidator.validateCoachNameInput(coaches);
-        return Arrays.asList(coaches.split(",")).stream()
+        return new Coaches(Arrays.asList(coaches.split(",")).stream()
                 .map(Coach::new)
-                .collect(Collectors.toList());
+                .collect(Collectors.toList()));
+    }
+
+    public void setUneatableFood(Coaches coaches) {
+        List<String> coachNames = coaches.getCoachNames();
+        coachNames.forEach(coachName -> {
+            List<String> unEatableFoodList = ErrorCatcher.returnRetryHandler(()->getUnEatableFoodList(coachName));
+            coaches.setUnEatableFoodFor(coachName,unEatableFoodList);
+        });
     }
 
     private List<String> getUnEatableFoodList(String name) {
