@@ -36,18 +36,17 @@
 -[x] 깔끔하게 ErrorCatcher를 여기다 넣어버리도록.
 
 ### RandomMenuService
--[ ] Inputhandler를 통해서 우선 코치들을 받는다.
--[ ] 코치들 이름을 List로 가지고 있고 그냥 필드에 박아버리자. 
--[ ] 우선 길이 5짜리 중복이 최대 두번만 허용이 되는 주 category List를 만든다.
--[ ] 이거에 대해서 stream을 돌도록 하자.
--[ ] 또 모든 코치에 대해서 loop을 돌아야 하고 맞는 메뉴를 추천해 주어야 한다. 최종적으로는 List<CoachMenuDto>를 뽑아서 밖으로 내준다.
+-[x] Inputhandler를 통해서 우선 코치들을 받는다.
+-[x] 우선 길이 5짜리 중복이 최대 두번만 허용이 되는 주 category List를 만든다. -> 필드로 만들자 (getter)
+-[x] 이거에 대해서 stream을 돌도록 하자.
+-[x] 또 모든 코치에 대해서 loop을 돌아야 하고 맞는 메뉴를 추천해 주어야 한다. 최종적으로는 List<CoachMenuDto>를 뽑아서 밖으로 내준다. -> 필드로 만들어버리자. (getter)
 
 ### OutputView
 
 
 ### Refactor
--[ ] 코치들을 먼저 받고 나중에 coaches에 넣어버리면.. coach 길이가 validation이 되지 않는다 먼저 Coaches에 넣어주고 하나하나씩 이름을 기준으로 바꾸도록 수정하자.
-
+-[x] 코치들을 먼저 받고 나중에 coaches에 넣어버리면.. coach 길이가 validation이 되지 않는다 먼저 Coaches에 넣어주고 하나하나씩 이름을 기준으로 바꾸도록 수정하자.
+-[ ] 시간이 남는다면 Picker류 들은 interface화 하면 좋을 것 같다.
 ---
 # 내용 정리
 - 월화수목금 점심 식사를 같이한다.
