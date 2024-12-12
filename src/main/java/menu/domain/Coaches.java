@@ -32,6 +32,13 @@ public class Coaches {
                 .get();
     }
 
+    public void setUnEatableFoodFor(String coachName, List<String> uneatableFood) {
+        Coach foundCoach =coaches.stream()
+                .filter(coach -> coach.getName().equals(coachName))
+                .findFirst().get();
+        foundCoach.setFoodsCannotEat(uneatableFood);
+    }
+
     public List<CoachMenuDto> getCoachMenus() {
         return coaches.stream()
                 .map(Coach::getCoachMenu)
