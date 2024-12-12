@@ -17,6 +17,12 @@ public enum MenuCategory {
         this.index = index;
         this.menus = menus;
     }
+
+    public static MenuCategory ofIndex(int index) {
+        return Arrays.stream(MenuCategory.values())
+                .filter(menuCategory -> menuCategory.index == index)
+                .findFirst().get();
+    }
 }
 
 
