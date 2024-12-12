@@ -33,7 +33,7 @@ public class Coaches {
     }
 
     public void setUnEatableFoodFor(String coachName, List<String> uneatableFood) {
-        Coach foundCoach =coaches.stream()
+        Coach foundCoach = coaches.stream()
                 .filter(coach -> coach.getName().equals(coachName))
                 .findFirst().get();
         foundCoach.setFoodsCannotEat(uneatableFood);
@@ -45,9 +45,9 @@ public class Coaches {
                 .collect(Collectors.toList());
     }
 
-    private void validateCoachRange(List<Coach> coaches){
-        if(coaches.size()<COACH_LENGTH_LOWER_LIMIT || coaches.size() > COACH_LENGTH_UPPER_LIMIT) {
-            throw new IllegalArgumentException(String.format(Errors.COACHES_RANGE.getMessage(),COACH_LENGTH_LOWER_LIMIT,COACH_LENGTH_UPPER_LIMIT));
+    private void validateCoachRange(List<Coach> coaches) {
+        if (coaches.size() < COACH_LENGTH_LOWER_LIMIT || coaches.size() > COACH_LENGTH_UPPER_LIMIT) {
+            throw new IllegalArgumentException(String.format(Errors.COACHES_RANGE.getMessage(), COACH_LENGTH_LOWER_LIMIT, COACH_LENGTH_UPPER_LIMIT));
         }
     }
 

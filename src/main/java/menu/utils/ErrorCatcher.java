@@ -19,7 +19,7 @@ public class ErrorCatcher {
                 System.out.println(e.getMessage());
             }
         }
-        System.err.printf((Errors.OVER_MAX_RETRIES.getMessage()),RETRY_LIMIT);
+        System.err.printf((Errors.OVER_MAX_RETRIES.getMessage()), RETRY_LIMIT);
         System.exit(1);
         return null;
     }
@@ -36,7 +36,7 @@ public class ErrorCatcher {
                 System.out.println(e.getMessage());
             }
         }
-        System.err.printf((Errors.OVER_MAX_RETRIES.getMessage()),RETRY_LIMIT);
+        System.err.printf((Errors.OVER_MAX_RETRIES.getMessage()), RETRY_LIMIT);
         System.exit(1);
     }
 }

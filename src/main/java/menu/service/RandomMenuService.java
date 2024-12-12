@@ -35,11 +35,11 @@ public class RandomMenuService {
     private void selectRandomMenusFor(Coaches coaches) {
         List<String> coachNames = coaches.getCoachNames();
         weeklyMenuCategory.forEach(menuCategory -> {
-            coachNames.forEach(coach->{
+            coachNames.forEach(coach -> {
                 String randomMenu = randomMenuPicker.pickRandomMenu(menuCategory);
                 boolean menuNotSelected = true;
-                while(menuNotSelected){
-                    menuNotSelected = !coaches.setCoachMenu(coach,randomMenu);
+                while (menuNotSelected) {
+                    menuNotSelected = !coaches.setCoachMenu(coach, randomMenu);
                 }
             });
         });

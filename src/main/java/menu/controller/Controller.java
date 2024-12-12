@@ -17,10 +17,10 @@ public class Controller {
         this.outputView = outputView;
     }
 
-    public void run(){
+    public void run() {
         randomMenuService.initializeService();
         WeeklyMenuCategoryDto weeklyMenuCategoryDto = randomMenuService.getWeeklyMenuCategory();
         List<CoachMenuDto> coachMenuDtos = randomMenuService.getCoachMenus();
-        outputView.printResults(weeklyMenuCategoryDto,coachMenuDtos);
+        outputView.printResults(weeklyMenuCategoryDto, coachMenuDtos);
     }
 }

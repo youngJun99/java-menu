@@ -14,9 +14,9 @@ public class RandomCategoryPicker {
 
     public List<MenuCategory> getWeeklyCategory() {
         List<MenuCategory> menuCategories = new ArrayList<>();
-        while(menuCategories.size() < DAYS_TO_EAT){
+        while (menuCategories.size() < DAYS_TO_EAT) {
             MenuCategory randomCategory = pickRandomCategory();
-            if(menuCategories.stream()
+            if (menuCategories.stream()
                     .filter(menuCategory -> menuCategory.equals(randomCategory))
                     .count() <= 1) {
                 menuCategories.add(randomCategory);
@@ -26,7 +26,7 @@ public class RandomCategoryPicker {
     }
 
     private MenuCategory pickRandomCategory() {
-        int randomIndex = Randoms.pickNumberInRange(CATEGORY_LOWER_LIMIT,CATEGORY_UPPER_LIMIT);
+        int randomIndex = Randoms.pickNumberInRange(CATEGORY_LOWER_LIMIT, CATEGORY_UPPER_LIMIT);
         return MenuCategory.ofIndex(randomIndex);
     }
 }

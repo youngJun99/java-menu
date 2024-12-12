@@ -35,15 +35,15 @@ public class InputHandler {
     public void setUneatableFood(Coaches coaches) {
         List<String> coachNames = coaches.getCoachNames();
         coachNames.forEach(coachName -> {
-            List<String> unEatableFoodList = ErrorCatcher.returnRetryHandler(()->getUnEatableFoodList(coachName));
-            coaches.setUnEatableFoodFor(coachName,unEatableFoodList);
+            List<String> unEatableFoodList = ErrorCatcher.returnRetryHandler(() -> getUnEatableFoodList(coachName));
+            coaches.setUnEatableFoodFor(coachName, unEatableFoodList);
         });
     }
 
     private List<String> getUnEatableFoodList(String name) {
         String input = inputView.getUnEatableFoodOfCoach(name);
         inputValidator.validateUneatableFoodInput(input);
-        if(input.isBlank()){
+        if (input.isBlank()) {
             return new ArrayList<>();
         }
         return Arrays.asList(input.split(","));
