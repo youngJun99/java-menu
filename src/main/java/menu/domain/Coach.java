@@ -2,6 +2,7 @@ package menu.domain;
 
 import menu.constants.Errors;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Coach {
@@ -14,15 +15,29 @@ public class Coach {
 
     private final String name;
     private List<String> uneatableFood;
+    private List<String> weekMenu;
 
     public Coach(String name) {
         validateNameLength(name);
         this.name = name;
+        this.weekMenu = new ArrayList<>();
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setFoodsCannotEat(List<String> uneatableFood) {
         validateUneatableFood(uneatableFood);
         this.uneatableFood = uneatableFood;
+    }
+
+    public boolean setNextMenu(String menuName) {
+        if(!uneatableFood.contains(menuName) && !weekMenu.contains(menuName)){
+            weekMenu.add(menuName);
+            return true;
+        }
+        return false;
     }
 
     private void validateNameLength(String name) {
