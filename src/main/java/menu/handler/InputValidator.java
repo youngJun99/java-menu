@@ -9,7 +9,7 @@ import java.util.List;
 public class InputValidator {
 
     private static final String COACH_VALIDATION_REGEX = "^[가-힣]+(,[가-힣]+)*$";
-    private static final String UNEATABLE_FOOD_VALIDATION_REGEX  = "^$|^[가-힣]+(,[가-힣]+)*$";
+    private static final String UNEATABLE_FOOD_VALIDATION_REGEX  = "^$|^[가-힣\\s]+(,([가-힣\\s]+))*$";
 
     public void validateCoachNameInput(String input) {
         if(!input.matches(COACH_VALIDATION_REGEX)){
