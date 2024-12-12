@@ -7,7 +7,8 @@ public enum Errors {
 
     //코치 관련 에러
     COACH_NAME_RANGE("코치의 이름은 %d 글자에서 %d 글자 사이로 입력해야 합니다."),
-    COACHES_RANGE("코치들은 최소 %d명에서 %d명 사이로 입력해야 합니다.");
+    COACHES_RANGE("코치들은 최소 %d명에서 %d명 사이로 입력해야 합니다."),
+    UNEATABLE_FOODS_RANGE("못먹는 음식은 최소 %d개이상 %d 이하여야 합니다.");
 
 
     private static final String PREFIX = "[ERROR] ";
@@ -19,5 +20,6 @@ public enum Errors {
     }
 
     public String getMessage() {
-        return PREFIX+message;
+        return PREFIX + message;
     }
+}
